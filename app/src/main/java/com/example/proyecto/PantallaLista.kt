@@ -21,6 +21,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.res.painterResource
 import com.example.proyecto.modelos.Carta
@@ -55,7 +56,8 @@ fun buscarCartas(cartas: List<Carta>, texto: String): List<Carta> {
 @Composable
 fun PantallaLista(
     cartas: List<Carta>,
-    onCartaSeleccionada: (Carta) -> Unit
+    onCartaSeleccionada: (Carta) -> Unit,
+    onIrColeccion: () -> Unit
 ) {Column(
         modifier = Modifier
             .fillMaxSize()
@@ -79,6 +81,12 @@ fun PantallaLista(
             style = MaterialTheme.typography.titleMedium,
             color= MaterialTheme.colorScheme.onBackground
         )
+        Button(
+            onClick = onIrColeccion,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Mi colección")
+        }
         OutlinedTextField(
             value = textoBusqueda,
             onValueChange = {

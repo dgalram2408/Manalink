@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.safeDrawingPadding
 import com.example.proyecto.modelos.Carta
 import com.example.proyecto.navegacion.AppNavegacion
+import com.example.proyecto.repositorios.ColeccionRepositorio
 import com.example.proyecto.ui.theme.ProyectoTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,13 +48,14 @@ class MainActivity : ComponentActivity() {
 
             )
         )
-
+        val coleccionRepositorio = ColeccionRepositorio()
         setContent {
             ProyectoTheme {
                 Box(
                     modifier = androidx.compose.ui.Modifier.safeDrawingPadding()
                 ) {
-                    AppNavegacion(cartas = cartas)
+                    AppNavegacion(cartas = cartas,
+                        coleccionRepositorio = coleccionRepositorio)
                 }
             }
         }
